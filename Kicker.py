@@ -1,6 +1,6 @@
 import psutil
 
-def find_procs_by_name(name):
+def lowerPrio(name):
     "Return a list of processes matching 'name'."
     ls = []
     for p in psutil.process_iter(attrs=['name']):
@@ -11,21 +11,18 @@ def find_procs_by_name(name):
             print(p.nice())
     return ls
 
-def quantList(name):
+def quantList():
     "Return a list of processes matching 'name'."
     ls = []
+	processList = {}
     for p in psutil.process_iter(attrs=['name']):
-		prevName = 
-        if p.info['name'] == name:
-            ls.append(p)
-            p.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
-            print(p)
-            print(p.nice())
-    return ls	
-	
+		if(p.info['name'] in processList) :
+			processList.add()
+    return processList
+
 	
 def main():
-  find_procs_by_name('Discord.exe')
+	quantList()
   
 if __name__== "__main__":
   main()
