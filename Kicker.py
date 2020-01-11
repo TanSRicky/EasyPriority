@@ -7,8 +7,6 @@ def lowerPrio(name):
         if p.info['name'] == name:
             ls.append(p)
             p.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
-            print(p)
-            print(p.nice())
     return ls
 
 def quantList():
