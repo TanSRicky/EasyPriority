@@ -21,7 +21,15 @@ def quantList():
         else:
             processList[p.info['name']]=processList[p.info['name']]+1
     return processList
-
+    
+def getNameList():
+    pList = quantList()
+    keys = pList.keys()
+    ls = []
+    for k in keys:
+        ls.append(k)
+    return ls
+    
 def getMenu():
     pList = quantList()
     keys = pList.keys()
@@ -33,6 +41,9 @@ def getMenu():
     
 def main():
     getMenu()
+    list = getNameList()
+    print(list[int(input("Input choice"))-1])
+   
     
     
 if __name__== "__main__":
