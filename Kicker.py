@@ -10,6 +10,19 @@ def find_procs_by_name(name):
             print(p)
             print(p.nice())
     return ls
+
+def quantList(name):
+    "Return a list of processes matching 'name'."
+    ls = []
+    for p in psutil.process_iter(attrs=['name']):
+		prevName = 
+        if p.info['name'] == name:
+            ls.append(p)
+            p.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+            print(p)
+            print(p.nice())
+    return ls	
+	
 	
 def main():
   find_procs_by_name('Discord.exe')
