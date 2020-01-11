@@ -12,6 +12,7 @@ def lowerPrio(name):
     return ls
 
 def quantList():
+    "Return a list of processes matching 'name'."
     ls = []
     processList = {}
     for p in psutil.process_iter(attrs=['name']):
@@ -21,11 +22,17 @@ def quantList():
             processList[p.info['name']]=processList[p.info['name']]+1
     return processList
 
-
-def main():
+def getMenu():
     pList = quantList()
-   
-    print(pList)
+    keys = pList.keys()
+    i = 1
+    for k in keys:
+        if (i < 10): print(i ,'',k.ljust(75,'.'), pList[k])
+        if (i >= 10 ): print(i ,k.ljust(75,'.'), pList[k])
+        i = i + 1
+    
+def main():
+    getMenu()
     
     
 if __name__== "__main__":
