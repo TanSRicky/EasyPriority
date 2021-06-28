@@ -1,0 +1,67 @@
+import psutil
+procs = {
+    p.name: p.info
+    for p in psutil.process_iter(['pid','name', 'username'])
+}
+print (procs)
+processList = {}
+
+def lowerPrio(name):
+
+    ls = []
+    for p in psutil.process_iter(attrs = ['name']):
+        if p.info['name'] == name:
+            ls.append(p)
+            p.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+    return ls
+
+def fillPQList():
+    global processList
+    for k, v in procs.items():
+        if v['username'] == None: continue
+        if not(v['name'] in processList):
+            processList[v['name']] = 1
+        else :
+            processList[v['name']] = processList[v['name']] + 1
+
+def getNameList():
+    pList = quantList()
+    keys = pList.keys()
+    ls = []
+    for k in keys:
+        ls.append(k)
+    return ls
+
+def getMenu():
+    pList = quantList()
+    keys = pList.keys()
+    i = 1
+    for k in keys:
+        if (i < 10): print(i, '', k.ljust(75, '.'), pList[k])
+    if (i >= 10): print(i, k.ljust(75, '.'), pList[k])
+    i = i + 1
+    
+def kvProcs():
+    for k, v in procs.items():
+        if v['username'] != None: print(k, v)
+
+
+def main():
+    fillPQList()
+    delim = "-"
+    i = 1
+    for(k,v) in processList.items():
+        if( v >= 2 ) : delim = "+"
+        k = str(i) + ". " + k
+        print(k  ,str(v).rjust(50-len(str(k)),delim))
+        delim = "-"
+        i = i + 1
+  
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
