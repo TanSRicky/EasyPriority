@@ -1,5 +1,5 @@
-# DiscordKicker
-Script that uses psutil to keep Discord processes at low priority to avoid performance loss in video games.
+# EasyPriority
+Script that uses psutil to toggle processes on Windows OS without having to change each process spawned from a single application. 
   
 Current state:
   1. The program runs from Tkinter, and has an EXE (inside of 'dist' folder)
