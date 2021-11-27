@@ -2,7 +2,7 @@
 Script that uses psutil to keep Discord processes at low priority to avoid performance loss in video games.
   
 Current state:
-  1. The program runs from Tkinter, and has an EXE
+  1. The program runs from Tkinter, and has an EXE (inside of 'dist' folder)
   2. The program succesfully finds process and attempts to lower priority. May fail based on type of process (i.e windows system processes) 
   3. Works for Windows only
   
